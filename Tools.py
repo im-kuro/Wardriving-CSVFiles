@@ -1,5 +1,7 @@
+
 # airodump is used for getting close wifi networks
 # aircrack is for cracking the captured file
+import subprocess
 from colorama import Fore
 import pyrcrack, os
 
@@ -20,10 +22,7 @@ def ListenAndCaptureFile(NetWrkInterface):
 
 def FindNetworks(NetWrkInterface):
     print(Fore.GREEN + f"[!] Listening For Nearby Networks\n** 1NF0 **\nNetwork Interface ==> {NetWrkInterface}\n")
-    os.system(f"sudo airodump-ng {NetWrkInterface}")
-
-
-
+    subprocess.check_output(f"xterm -e 'sudo airodump-ng {NetWrkInterface}'")
 
 
 
