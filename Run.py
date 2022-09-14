@@ -20,18 +20,6 @@ elif platform == "darwin":
 elif platform == "win32":
     print(Fore.RED + "[!] You have a invalid operating system! Please use linux instead.")
 
-def CheckForTools():
-    for dir in os.listdir("/usr/sbin"):
-        if dir == "airodump-ng":
-            print(Fore.RED + "[!] airodump-ng Is Installed...")
-        elif dir == "aireplay-ng":
-            print(Fore.RED + "[!] aireplay-ng Is Installed...")
-        else:
-            installToolsYN = input(Fore.RED + "[!] MISSING TOOLS! Would you like to install them now? y/n: ")
-            if installToolsYN == "y" or "Y":
-                with open("tools.txt", "r") as file:
-                    for line in file:
-                        os.system(f"sudo apt install {line}")
 
 
 os.system('ifconfig')
@@ -40,6 +28,8 @@ networkInterface = input(Fore.GREEN + "\n[?] Enter the network interface: ")
 
 Networks = Tools.FindNetworks(networkInterface)
 print(Networks)
+
+
 
 
 
