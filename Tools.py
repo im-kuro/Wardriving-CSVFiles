@@ -20,14 +20,7 @@ def ListenAndCaptureFile(NetWrkInterface):
 
 def FindNetworks(NetWrkInterface):
     print(Fore.GREEN + f"[!] Listening For Nearby Networks\n** 1NF0 **\nNetwork Interface ==> {NetWrkInterface}\n")
-    os.system()
-
-
-
-
-
-
-
+    os.system(f"sudo airodump-ng {NetWrkInterface}")
 
 
 
