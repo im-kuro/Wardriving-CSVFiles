@@ -1,7 +1,7 @@
 import Tools, os
 from colorama import Fore
 from sys import platform
-import pyrcrack
+
 
 ''' 
 --INFO
@@ -24,7 +24,10 @@ elif platform == "win32":
 os.system(Fore.CYAN + 'ifconfig')
 networkInterface = input(Fore.GREEN + "\n[?] Enter the network interface: ")
 
-airmon = pyrcrack.AirmonNg()
+async def FindNetWrks(networkInterface):
+    Networks = await Tools.FindNetworks(networkInterface)
+    print(Networks)
 
-Networks = Tools.FindNetworks(networkInterface)
 
+
+FindNetWrks(networkInterface)
