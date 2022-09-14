@@ -20,11 +20,13 @@ def ListenAndCaptureFile(NetWrkInterface):
 
 
 
-def FindNetworks(NetWrkInterface):
+async def FindNetworks(NetWrkInterface):
     print(Fore.GREEN + f"[!] Listening For Nearby Networks\n** 1NF0 **\nNetwork Interface ==> {NetWrkInterface}\n")
-    subprocess.check_output(f"xterm -e 'sudo airodump-ng {NetWrkInterface}'")
-
-
+    #subprocess.check_output(['xterm', '-e', 'sudo', 'airodump-ng', f'{NetWrkInterface}'])
+    async with airmon(NetWrkInterface) as mon:
+        async with pyrcrack.AirodumpNg() as pdump:
+            async for result in pdump(mon.monitor_interface):
+                return result
 
 
 
