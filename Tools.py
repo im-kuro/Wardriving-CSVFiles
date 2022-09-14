@@ -17,13 +17,14 @@ def ListenAndCaptureFile(NetWrkInterface):
 
 
 
-
 async def FindNetworks(NetWrkInterface):
     print(Fore.GREEN + f"[!] Listening For Nearby Networks\n** 1NF0 **\nNetwork Interface ==> {NetWrkInterface}\n")
     async with airmon(NetWrkInterface) as mon:
         async with pyrcrack.AirodumpNg() as pdump:
             async for aps in pdump(mon.monitor_interface):
                 print(aps)
+                await asyncio.sleep(0.3)
+                return await aps
 
 
 
