@@ -1,7 +1,7 @@
 import Tools, os
 from colorama import Fore
 from sys import platform
-
+import asyncio
 
 ''' 
 --INFO
@@ -21,13 +21,10 @@ elif platform == "darwin":
 elif platform == "win32":
     print(Fore.RED + "[!] You have a invalid operating system! Please use linux instead.")
 
-os.system(Fore.CYAN + 'ifconfig')
+os.system('ifconfig')
 networkInterface = input(Fore.GREEN + "\n[?] Enter the network interface: ")
 
-async def FindNetWrks(networkInterface):
-    Networks = await Tools.FindNetworks(networkInterface)
-    print(Networks)
 
+Networks = asyncio.run(Tools.FindNetworks(networkInterface))
+print(Networks)
 
-
-FindNetWrks(networkInterface)
