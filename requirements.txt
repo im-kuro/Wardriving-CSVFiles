@@ -1,0 +1,4 @@
+colorama
+sys
+os
+pyrcrack
